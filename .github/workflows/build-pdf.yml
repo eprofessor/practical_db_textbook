@@ -23,11 +23,7 @@ jobs:
             latexmk inkscape \
             texlive-xetex texlive-latex-extra texlive-fonts-recommended texlive-lang-english
 
-      - name: Uninstall conflicting packages
-        run: |
-          pip -m install -U pip
-          pip uninstall -y alabaster babel sphinx runestone
-          
+         
       - name: Install dependencies
         run: |
           pip install alabaster==0.7.12 babel==2.9.1 sphinx==3.5.4 runestone==6.0.9  docutils==0.16 sphinxcontrib-svg2pdfconverter            
