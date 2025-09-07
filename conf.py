@@ -352,3 +352,26 @@ setup.custom_css_files = ['theme-overrides.css',]
 key_words = ''
 course_description = ''
 shelf_section = 'Database Textbooks'
+
+
+# --- PDF/LaTeX settings for CI build ---------------------------------
+# Use XeLaTeX so Unicode works out-of-the-box
+latex_engine = "xelatex"
+
+# Ensure the SVG→PDF converter runs (via Inkscape)
+try:
+    extensions
+except NameError:
+    extensions = []
+if "sphinxcontrib.inkscapeconverter" not in extensions:
+    extensions.append("sphinxcontrib.inkscapeconverter")
+
+# Map a few symbols that often appear in Runestone/notes
+latex_elements = globals().get("latex_elements", {})
+latex_elements["preamble"] = latex_elements.get("preamble", "") + r"""
+\usepackage{newunicodechar}
+\usepackage{pifont}
+\newunicodechar{❏}{\ding{113}}
+\newunicodechar{✓}{\ding{51}}
+\newunicodechar{✗}{\ding{55}}
+"""
