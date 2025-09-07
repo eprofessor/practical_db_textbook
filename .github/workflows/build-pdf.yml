@@ -31,6 +31,10 @@ jobs:
       - name: Upgrade Sphinx
         run: pip install --upgrade sphinx
 
+      - name: Install dependencies
+        run: |
+           pip install alabaster==0.7.12 babel==2.9.1 sphinx==3.5.4 runestone==6.0.9
+
       - name: Build LaTeX sources with Sphinx
         run: |
           sphinx-build -M latex _sources _build -c . -E
